@@ -19,12 +19,17 @@ var Tile = new Schema({
   linkURL: { type: String, required: false },
   pWidth: { type: Number, required: true },
   pHeight: { type: Number, required: true },
+<<<<<<< HEAD
   streamID: { type: String, required: true },
+=======
+  publisher: { type: String, required: true },
+>>>>>>> 2bb3253a8d159ec4deb25c9221d36eb972c388d2
   updated: { type: Date, required: true, default: Date.now }
 });
 var TileModel = mongoose.model('Tile', Tile);  
 exports.TileModel = TileModel;
 
+<<<<<<< HEAD
 var Stream = new Schema({
   created: { type: Date, required: true, default: Date.now },
   promoted: { type: Boolean, required: true, default: false },
@@ -42,6 +47,13 @@ var User = new Schema({
   password: { type: String, required: true },
   realm: { type: String, required: true },
   username: { type: String, required: true, unique: true },
+=======
+var User = new Schema({
+  created: { type: Date, required: true, default: Date.now },
+  email: { type: String, required: true },
+  password: { type: String, required: true },
+  username: { type: String, required: true },
+>>>>>>> 2bb3253a8d159ec4deb25c9221d36eb972c388d2
   updated: { type: Date, required: true, default: Date.now }
 });
 var UserModel = mongoose.model('User', User);  

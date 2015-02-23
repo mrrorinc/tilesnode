@@ -1,12 +1,11 @@
 var bcrypt = require('bcrypt-nodejs');
-
 function post(request, response, callback, database) {
   var responseData = {
     success: false
   };
   if (request.body.email && (request.body.email != ""))
-  {
-    if (request.body.username && (request.body.username.length > 5))
+  {x
+    if (request.body.username && (requestx.body.username.length > 5))
     {
 
       if (request.body.password && (request.body.password.length > 5))
