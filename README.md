@@ -9,6 +9,8 @@ The real purpose of this project is experimental and educational. Goals are
 
 The 'tilesnode' project is the RESTful API implementation for 'tiles' on Node.js and mongoDB.
 
+PLEASE KEEP IN MIND THAT THIS PROJECT IS AN EXPERIMENTAL PROTOTYPE, NOT PRODUCTION CODE. FUNCTIONALITY MAY BE INCOMPLETE OR CHANGING.
+
 To see 'tiles' in action:
 
 [play with the the hosted prototype](http://development.mrrorinc-tiles.divshot.io/#/)
