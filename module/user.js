@@ -73,6 +73,7 @@ function login(request, response, callback, database) {
   };
   return database.UserModel.findOne(query, function (error, user) {
     if (!error && user) {
+      console.log("user found");
       if (bcrypt.compareSync(request.body.password, user.password))
       {
         database.StreamModel.findOne({
@@ -98,7 +99,11 @@ function login(request, response, callback, database) {
           
           callback.call(null, response, responseData);
         });
+      } else {
+        callback.call(null, response, responseData);
       }
+    } else {
+      callback.call(null, response, responseData);
     }
   });
 }
