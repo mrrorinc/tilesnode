@@ -8,4 +8,4 @@ var API = server.start();
 database.initialize();
 router.configure(API, database);
 
-API.listen(4444);
+API.listen(process.env.PORT || 4444);
