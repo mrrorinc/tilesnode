@@ -53,9 +53,9 @@ function post(request, response, callback, database) {
               streamID: stream._id,
               _id: newUser._id
             };
+            responseData.user = request.session.user;
+            callback.call(null, response, responseData);
           });
-          responseData.user = request.session.user;
-          callback.call(null, response, responseData);
         });
       }
     });
