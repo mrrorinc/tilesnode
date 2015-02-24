@@ -1,5 +1,21 @@
 var MAX_TILES_TO_PULL = 192;
 
+function home(request, response, callback, database) {
+  database.TileModel.find({})
+  .sort({
+    created: -1
+  })
+  .limit(MAX_TILES_TO_PULL)
+  .exec(
+    function (error, tiles) {
+      if (error) {
+        callback.call(null, response, error);
+      } else {
+        callback.call(null, response, tiles);
+      }
+  });  
+}
+
 function selfStream(request, response, callback, database) {
   database.TileModel.find({
     streamID: request.session.user.streamID
@@ -9,7 +25,6 @@ function selfStream(request, response, callback, database) {
   })
   .limit(MAX_TILES_TO_PULL)
   .exec(
-  
    function (error, tiles) {
     if (error) {
       callback.call(null, response, error);
@@ -40,27 +55,26 @@ function memberStream(request, response, callback, database) {
           callback.call(null, response, tiles);
         }
       });
-
     }
   );
 }
 
-function home(request, response, callback, database) {
-  database.TileModel.find({})
-  .sort({
-    created: -1
+function info(request, response, callback, database) {
+  database.StreamModel.findOne({
+    _id: request.params.streamID
   })
-  .limit(MAX_TILES_TO_PULL)
   .exec(
-    function (error, tiles) {
-      if (error) {
-        callback.call(null, response, error);
-      } else {
-        callback.call(null, response, tiles);
-      }
-  });  
+    function (error, stream) {
+     if (error) {
+       callback.call(null, response, error);
+     } else {
+       callback.call(null, response, stream);
+     }
+   }
+  );
 }
 
+exports.home = home;
 exports.selfStream = selfStream;
 exports.memberStream = memberStream;
-exports.home = home;
+exports.info = info;

@@ -28,7 +28,6 @@ function post(request, response, callback, database) {
   } else {
     responseData.error = "please provide caption or image!";
   }
-  
   if (responseData.success)
   {
     var newTile = new database.TileModel(request.body);

@@ -1,13 +1,5 @@
 var mongoose = require('mongoose');
 
-function initialize() {
-  var databaseURL = "tiles";
-  database = mongoose.connect('mongodb://localhost/' + databaseURL);
-  console.log("Database initialized.");
-  return database;
-}
-exports.initialize = initialize;
-
 var Schema = mongoose.Schema;
 
 var Tile = new Schema({
@@ -23,7 +15,6 @@ var Tile = new Schema({
   updated: { type: Date, required: true, default: Date.now }
 });
 var TileModel = mongoose.model('Tile', Tile);  
-exports.TileModel = TileModel;
 
 var Stream = new Schema({
   created: { type: Date, required: true, default: Date.now },
@@ -34,7 +25,6 @@ var Stream = new Schema({
   updated: { type: Date, required: true, default: Date.now }
 });
 var StreamModel = mongoose.model('Stream', Stream);  
-exports.StreamModel = StreamModel;
 
 var User = new Schema({
   created: { type: Date, required: true, default: Date.now },
@@ -45,4 +35,16 @@ var User = new Schema({
   updated: { type: Date, required: true, default: Date.now }
 });
 var UserModel = mongoose.model('User', User);  
+
+function initialize() {
+  var databaseURL = "tiles";
+  database = mongoose.connect('mongodb://localhost/' + databaseURL);
+  console.log("Database initialized.");
+  return database;
+}
+
+exports.TileModel = TileModel;
+exports.StreamModel = StreamModel;
 exports.UserModel = UserModel;
+
+exports.initialize = initialize;

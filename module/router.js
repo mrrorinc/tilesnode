@@ -33,6 +33,10 @@ function configure(API, database) {
     return Stream.memberStream(request, response, API.printResponse, database);
   });
 
+  API.get('/stream-info/:streamID', function (request, response){
+    return Stream.info(request, response, API.printResponse, database);
+  });
+
   API.get('/tile', function (request, response){
     return Tile.list(request, response, API.printResponse, database);
   });
