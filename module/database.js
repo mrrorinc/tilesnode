@@ -42,7 +42,7 @@ function initialize() {
     user: 'tiles',
     pass: 't1l3s'
   }
-  var database = mongoose.connect('ds047901.mongolab.com:47901/heroku_app34299899', options);
+  var database = mongoose.connect('ds047901.mongolab.com:47901/heroku_app34302339', options);
   console.log("Database initialized.");
   return database;
 }
