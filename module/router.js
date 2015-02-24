@@ -3,14 +3,7 @@ var Stream = require("./stream.js");
 var Tile = require("./tile.js");
 
 function configure(API, database) {
-  API.setHeader = function(response) {  
-    response.setHeader("Access-Control-Allow-Origin", "http://localhost");
-    response.setHeader("Access-Control-Allow-Headers", "http://localhost");
-    response.setHeader("Access-Control-Allow-Methods", "POST,GET,PUT,DELETE");
-  };    
-  
   API.printResponse = function(response, toSend) {
-    API.setHeader(response);
     response.send(toSend);  
   }
 
