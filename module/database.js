@@ -37,8 +37,12 @@ var User = new Schema({
 var UserModel = mongoose.model('User', User);  
 
 function initialize() {
-  var databaseURL = "tiles";
-  database = mongoose.connect('mongodb://localhost/' + databaseURL);
+  var databaseURL = "tiles";  
+  var options = {
+    user: 'tiles',
+    pass: 't1l3s'
+  }
+  var database = mongoose.connect('ds047901.mongolab.com:47901/heroku_app34299899', options);
   console.log("Database initialized.");
   return database;
 }
