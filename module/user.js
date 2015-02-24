@@ -43,15 +43,20 @@ function post(request, response, callback, database) {
           streamName : newUser.username
         });
         newStream.save(function(error) {
+          database.StreamModel.findOne({
+            publisherName: newUser.username
+          })
+          .exec(function(error, stream) {
+            request.session.user = {
+              realm: newUser.realm,
+              username: newUser.username,
+              streamID: stream._id,
+              _id: newUser._id
+            };
+          });
+          responseData.user = request.session.user;
+          callback.call(null, response, responseData);
         });
-        
-        request.session.user = {
-          realm: newUser.realm,
-          username: newUser.username,
-          _id: newUser._id
-        };
-        responseData.user = request.session.user;
-        callback.call(null, response, responseData);
       }
     });
   } else {
