@@ -2,7 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var session = require('client-sessions');
 
-var RUN_LOCAL = false;
+var RUN_LOCAL = true;
 
 function start() {
   var API = express();
