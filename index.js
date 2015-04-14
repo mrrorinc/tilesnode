@@ -8,4 +8,8 @@ var API = server.start();
 database.initialize();
 router.configure(API, database);
 
-API.listen(process.env.PORT || 4444);
+// process.env.PORT may be passed in by the host
+var port = process.env.PORT || 4444;
+API.listen(port);
+
+console.log('API available at port ' + port);

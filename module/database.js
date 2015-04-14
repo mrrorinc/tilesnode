@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var configuration = require('../configuration/global.js');
 
 var Schema = mongoose.Schema;
 
@@ -42,7 +43,7 @@ function initialize() {
     user: 'tiles',
     pass: 't1l3s'
   }
-  var database = mongoose.connect('mongodb://ds047901.mongolab.com:47901/heroku_app34302339', options);
+  var database = mongoose.connect(configuration.REMOTE_DATABASE, options);
   console.log("Database initialized.");
   return database;
 }
